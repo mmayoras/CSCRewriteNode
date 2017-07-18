@@ -15,7 +15,7 @@ class Consumer extends Component {
   }
 
   loadConsumerApplicationsFromServer = () => {
-    fetch('http://localhost:8080/api/consumerApplications').
+    fetch('/api/consumerApplications').
     then((response) => response.json()).
     then((responseData) => {
       this.setState({
@@ -32,7 +32,7 @@ class Consumer extends Component {
 
     consumerApplication.id = this.state.conId;
 
-    fetch('http://localhost:8080/api/consumerApplications', {
+    fetch('/api/consumerApplications', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

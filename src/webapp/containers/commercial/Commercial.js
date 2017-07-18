@@ -15,7 +15,7 @@ class Commercial extends Component {
 
   loadCommercialApplicationsFromServer = () => {
     // let endpointUrl = 'http://jsonplaceholder.typicode.com/posts/1';
-    let endpointUrl = 'http://localhost:8080/api/commercialApplications';
+    let endpointUrl = '/api/commercialApplications';
 
     fetch(endpointUrl).then(response => response.json()).then(responseData => {
       this.setState({
@@ -32,7 +32,7 @@ class Commercial extends Component {
 
     commercialApplication.id = this.state.comId;
 
-    fetch('http://localhost:8080/api/commercialApplications', {
+    fetch('/api/commercialApplications', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
