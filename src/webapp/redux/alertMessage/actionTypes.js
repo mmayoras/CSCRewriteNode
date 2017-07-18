@@ -1,0 +1,6 @@
+export const REMOVE_ALERT = 'REMOVE_ALERT';
+export const REMOVE_ALL_ALERTS = 'REMOVE_ALL_ALERTS';
+export const ADD_ALERT__WARNING = 'ADD_ALERT__WARNING';
+export const ADD_ALERT__ERROR = 'ADD_ALERT__ERROR';
+export const ADD_ALERT__INFO = 'ADD_ALERT__INFO';
+export const ADD_ALERT__SUCCESS = 'ADD_ALERT__SUCCESS';

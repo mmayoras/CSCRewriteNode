@@ -1,2 +1,3 @@
 # Local copies of npm node dependencies
 /node_modules
+/public/bundle.js

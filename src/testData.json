@@ -1,0 +1,34 @@
+{
+  "consumerApplications" : [
+    {
+        "id" : 1,
+        "firstName" : "Homer",
+        "middleInitial" : "A",
+        "lastName" : "Depot",
+        "strNumber" : "9741",
+        "date" : "2017-07-18T19:11:08.472+0000",
+        "city" : "Smyrna",
+        "state" : "GA",
+        "addressLine1" : "3375 SpringHill Pkwy",
+        "addressLine2" : "Apt 325",
+        "driverLicense" : "GA12345",
+        "email" : "test@test.com"
+    }
+  ],
+  "commercialApplications" : [
+    {
+      "id" : 1,
+      "firstName" : "Homer",
+      "middleInitial" : "A",
+      "lastName" : "Depot",
+      "strNumber" : "1234",
+      "date" : "2017-07-18T19:11:08.524+0000",
+      "city" : "Smyrna",
+      "state" : "GA",
+      "addressLine1" : "3375 SpringHill Pkwy",
+      "addressLine2" : "Apt 325",
+      "driverLicense" : "GA12345",
+      "email" : "test2@test.com"
+    }
+  ]
+}
