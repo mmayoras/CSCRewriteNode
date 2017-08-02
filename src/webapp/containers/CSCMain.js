@@ -3,9 +3,6 @@
  */
 import React, {Component} from 'react';
 import {Route} from 'react-router-dom';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import PropTypes from 'prop-types';
 import Menu from '../components/Menu';
 import Commercial from './commercial/Commercial';
 import Consumer from './consumer/Consumer';
@@ -20,9 +17,7 @@ class CSCMain extends Component {
   render = () => {
     return (
         <div className="home">
-          <Header empty={this.userProfile === null}
-                  userProfile={this.userProfile}
-                  logout={this.props.actions.logoutUser}/>
+          <Header/>
           <div className="home-layout navigation-wrapper">
             <Menu/>
             <div className="home-content">
@@ -38,13 +33,4 @@ class CSCMain extends Component {
   }
 }
 
-CSCMain.contextTypes = {
-  store: PropTypes.object,
-};
-
-CSCMain.propTypes = {
-  actions: PropTypes.object.isRequired,
-  history: PropTypes.object,
-};
-
-export default connect(null, mapDispatchToProps)(CSCMain);
+export default CSCMain;

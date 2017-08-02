@@ -32,10 +32,6 @@ class CSC extends Component {
   }
 }
 
-CSC.contextTypes = {
-  store: PropTypes.object
-};
-
 CSC.propTypes = {
   history: PropTypes.object
 };

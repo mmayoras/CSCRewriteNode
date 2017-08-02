@@ -24,6 +24,13 @@ module.exports = {
         test: /\.scss$/,
         loaders: ['style-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap'],
       },
+      {
+        test: /\.(jpg|png|gif)$/,
+        loader: 'file-loader',
+        options: {
+          name: './images/[name].[ext]',
+        },
+      },
     ]
   }
 };

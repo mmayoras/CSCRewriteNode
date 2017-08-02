@@ -36,12 +36,12 @@ class ConsumerTable extends Component {
           <div style={{display: 'table', width: '100%'}}>
             <div style={{width: '50%', float: 'left'}}>
               <div style={{float: 'right'}}>
-                <img src='/images/rpl.gif' alt="consumer card"
+                <img src={require('../../../../images/rpl.gif')} alt="consumer card"
                      style={imageStyle}/>
               </div>
             </div>
             <div style={{width: '50%', float: 'right'}}>
-              <img src='/images/projectloanNew02APR2014.gif'
+              <img src={require('../../../../images/projectloanNew02APR2014.gif')}
                    alt="consumer card" style={imageStyle}/>
             </div>
           </div>

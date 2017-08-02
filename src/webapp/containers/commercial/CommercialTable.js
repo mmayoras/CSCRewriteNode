@@ -37,12 +37,12 @@ class CommercialTable extends Component {
           <div style={{display: 'table', width: '100%'}}>
             <div style={{width: '50%', float: 'left'}}>
               <div style={{float: 'right'}}>
-                <img src='/images/crcNew02APR2014.gif'
+                <img src={require('../../../../images/crcNew02APR2014.gif')}
                      alt="commercial card" style={imageStyle}/>
               </div>
             </div>
             <div style={{width: '50%', float: 'right'}}>
-              <img src='/images/proxNew02APR2014.gif'
+              <img src={require('../../../../images/proxNew02APR2014.gif')}
                    alt="commercial card" style={imageStyle}/>
             </div>
           </div>
