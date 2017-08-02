@@ -7,9 +7,7 @@ import PropTypes from 'prop-types';
 import {orange500, deepOrange500} from 'material-ui/styles/colors';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Authentication from '../utils/authHelper';
-import {Router, Route, Switch} from 'react-router-dom';
-import Login from './login/Login';
+import {Router, Route} from 'react-router-dom';
 import CSCMain from './CSCMain';
 
 const muiTheme = getMuiTheme({
@@ -23,32 +21,11 @@ const muiTheme = getMuiTheme({
 // version of hot reloading won't hot reload a stateless
 // component at the top-level.
 class CSC extends Component {
-  constructor(props, context) {
-    super(props, context);
-    this.store = context.store;
-
-    let useLogin = this.store.getState().login.useLogin;
-    if (useLogin === true) {
-      Authentication.isAuthenticated()
-      .then((authenticated) => {
-        if (!authenticated) {
-          this.props.history.push('/login');
-        }
-      });
-    } else {
-      this.props.history.push('/');
-    }
-  }
-
-  render() {
+  render = () => {
     return (
         <MuiThemeProvider muiTheme={muiTheme}>
           <Router history={this.props.history}>
-            {/*<div className="progress-linear indeterminate global-loader" />*/}
-            <Switch>
-              <Route path="/login" component={Login}/>
-              <Route path="/" component={CSCMain}/>
-            </Switch>
+            <Route path="/" component={CSCMain}/>
           </Router>
         </MuiThemeProvider>
     );
