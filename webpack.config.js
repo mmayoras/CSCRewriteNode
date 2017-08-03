@@ -25,11 +25,8 @@ module.exports = {
         loaders: ['style-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap'],
       },
       {
-        test: /\.(jpg|png|gif)$/,
-        loader: 'file-loader',
-        options: {
-          name: './images/[name].[ext]',
-        },
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loader: "file-loader?name=/images/[name].[ext]"
       },
     ]
   }

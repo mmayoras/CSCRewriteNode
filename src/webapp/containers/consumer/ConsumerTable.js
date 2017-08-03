@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
 import ConsumerApplication from '../../components/consumer/ConsumerApplication';
 import ConsumerForm from '../../components/consumer/ConsumerForm';
+import imgLeft from '../../../../images/projectloanNew02APR2014.gif'
+import imgRight from '../../../../images/rpl.gif'
 
 class ConsumerTable extends Component {
   render() {
     const imageStyle = {
       height: '200px',
+
       width: '300px',
       paddingLeft: '25px',
       paddingRight: '25px',
@@ -36,12 +39,12 @@ class ConsumerTable extends Component {
           <div style={{display: 'table', width: '100%'}}>
             <div style={{width: '50%', float: 'left'}}>
               <div style={{float: 'right'}}>
-                <img src={require('../../../../images/rpl.gif')} alt="consumer card"
+                <img src={imgLeft} alt="consumer card"
                      style={imageStyle}/>
               </div>
             </div>
             <div style={{width: '50%', float: 'right'}}>
-              <img src={require('../../../../images/projectloanNew02APR2014.gif')}
+              <img src={imgRight}
                    alt="consumer card" style={imageStyle}/>
             </div>
           </div>
