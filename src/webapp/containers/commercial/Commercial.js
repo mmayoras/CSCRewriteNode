@@ -18,7 +18,7 @@ class Commercial extends Component {
     // let endpointUrl = 'http://jsonplaceholder.typicode.com/posts/1';
     let endpointUrl = '/api/commercialApplications';
     debugger;
-    fetch('/api/commercialApplications').
+    fetch(endpointUrl).
     then((response) => response.json()).
     then((responseData) => {
       debugger;
