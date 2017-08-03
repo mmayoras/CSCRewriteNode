@@ -1,5 +1,4 @@
 import express from 'express';
-import data from '../src/testData';
 import MongoClient from 'mongodb';
 import assert from 'assert';
 import config from '../config';
@@ -14,7 +13,7 @@ MongoClient.connect(config.mongodbUrl, (err, db) => {
 });
 
 router.get('/consumerApplications', (req, res) => {
-  let consumerApps;
+  let consumerApps = [];
 
   mdb.collection('consumer').find({})
     .each((err, consumerApp) => {
@@ -25,12 +24,12 @@ router.get('/consumerApplications', (req, res) => {
         return;
       }
 
-      consumerApps[consumerApp.id] = consumerApp;
+      consumerApps.push(consumerApp);
     });
 });
 
 router.get('/commercialApplications', (req, res) => {
-  let commercialApps;
+  let commercialApps = [];
 
   mdb.collection('commercial').find({})
     .each((err, commercialApp) => {
@@ -41,7 +40,7 @@ router.get('/commercialApplications', (req, res) => {
         return;
       }
 
-      commercialApps[commericalApp.id] = commercialApp;
+      commercialApps.push(commercialApp);
     });
 });
 

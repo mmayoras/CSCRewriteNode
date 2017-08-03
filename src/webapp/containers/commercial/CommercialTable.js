@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import CommercialApplication from '../../components/commercial/CommercialApplication';
 import CommercialForm from '../../components/commercial/CommercialForm';
-import imgLeft from '../../../../images/crcNew02APR2014.gif'
-import imgRight from '../../../../images/proxNew02APR2014.gif'
 
 class CommercialTable extends Component {
   render() {
@@ -39,12 +37,12 @@ class CommercialTable extends Component {
           <div style={{display: 'table', width: '100%'}}>
             <div style={{width: '50%', float: 'left'}}>
               <div style={{float: 'right'}}>
-                <img src={imgLeft}
+                <img src={require("../../../static/images/crcNew02APR2014.gif")}
                      alt="commercial card" style={imageStyle}/>
               </div>
             </div>
             <div style={{width: '50%', float: 'right'}}>
-              <img src={imgRight}
+              <img src={require("../../../static/images/proxNew02APR2014.gif")}
                    alt="commercial card" style={imageStyle}/>
             </div>
           </div>

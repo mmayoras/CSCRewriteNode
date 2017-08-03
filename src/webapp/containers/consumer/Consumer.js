@@ -19,7 +19,7 @@ class Consumer extends Component {
     then((response) => response.json()).
     then((responseData) => {
       this.setState({
-        consumerApplications: responseData._embedded.consumerApplications
+        consumerApplications: responseData
       });
     });
   };

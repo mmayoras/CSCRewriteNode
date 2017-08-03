@@ -1,3 +1,13 @@
 # Local copies of npm node dependencies
 /node_modules
 /public/bundle.js
+
+# Intellij Files
+CSCRewriteNode.iml
+/.idea
+
+# Webpack build files
+/public/crcNew02APR2014-be6eeee6f13d958f982ae124d2a72083.gif
+/public/projectloanNew02APR2014-cc69535f904b484b3320580156558761.gif
+/public/proxNew02APR2014-df2b8ffb73cc34d2e54f2c883b3f107c.gif
+/public/rpl-fe9225ed672f269b0ec47a1d8c32a481.gif

@@ -16,10 +16,13 @@ class Commercial extends Component {
   loadCommercialApplicationsFromServer = () => {
     // let endpointUrl = 'http://jsonplaceholder.typicode.com/posts/1';
     let endpointUrl = '/api/commercialApplications';
-
-    fetch(endpointUrl).then(response => response.json()).then(responseData => {
+    debugger;
+    fetch('/api/commercialApplications').
+    then((response) => response.json()).
+    then((responseData) => {
+      debugger;
       this.setState({
-        commercialApplications: responseData._embedded.commercialApplications
+        commercialApplications: responseData
       });
     });
   };
