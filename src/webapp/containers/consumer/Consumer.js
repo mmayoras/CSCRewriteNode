@@ -18,9 +18,12 @@ class Consumer extends Component {
     fetch('/api/consumerApplications').
     then((response) => response.json()).
     then((responseData) => {
+      debugger;
       this.setState({
         consumerApplications: responseData
       });
+    }).catch((err) => {
+      console.info(err);
     });
   };
 

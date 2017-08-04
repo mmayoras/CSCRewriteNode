@@ -18,6 +18,7 @@ router.get('/consumerApplications', (req, res) => {
   mdb.collection('consumer').find({})
     .each((err, consumerApp) => {
       assert.equal(null, err);
+      debugger;
 
       if (!consumerApp) {
         res.send(consumerApps);
@@ -34,8 +35,9 @@ router.get('/commercialApplications', (req, res) => {
   mdb.collection('commercial').find({})
     .each((err, commercialApp) => {
       assert.equal(null, err);
+      debugger;
 
-      if (!commericalApp) {
+      if (!commercialApp) {
         res.send(commercialApps);
         return;
       }

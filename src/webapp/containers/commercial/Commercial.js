@@ -11,20 +11,25 @@ class Commercial extends Component {
     super();
 
     // Set state data
-    this.state = {commercialApplications: [], comId: 2};
+    this.state = {
+      commercialApplications: [],
+      comId: 2
+    };
   }
 
-  loadCommercialApplicationsFromServer = () => {
-    // let endpointUrl = 'http://jsonplaceholder.typicode.com/posts/1';
+  loadCommercialApplicationsFromServer = () => {;
     let endpointUrl = '/api/commercialApplications';
     debugger;
-    fetch(endpointUrl).
+    fetch('/api/commercialApplications').
     then((response) => response.json()).
     then((responseData) => {
       debugger;
       this.setState({
         commercialApplications: responseData
       });
+    }).catch((err) => {
+      debugger;
+      console.info(err);
     });
   };
 
