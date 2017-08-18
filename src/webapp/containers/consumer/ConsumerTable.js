@@ -19,7 +19,7 @@ class ConsumerTable extends Component {
 
     let consumerApplications = this.props.consumerApplications.map(
         consumerApplication =>
-            <ConsumerApplication key={consumerApplication.id}
+            <ConsumerApplication key={consumerApplication._id}
                                  consumerApplication={consumerApplication}
                                  deleteConsumerApplication={this.props.deleteConsumerApplication}
             />,

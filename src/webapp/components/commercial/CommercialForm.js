@@ -28,7 +28,6 @@ class CommercialForm extends Component {
     event.preventDefault();
 
     let newCommercial = {
-      id: 0,
       firstName: this.state.firstName,
       middleInitial: this.state.middleInitial,
       lastName: this.state.lastName,

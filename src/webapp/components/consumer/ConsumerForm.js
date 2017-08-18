@@ -28,7 +28,6 @@ class ConsumerForm extends Component {
     event.preventDefault();
 
     let newConsumer = {
-      id: 0,
       firstName: this.state.firstName,
       middleInitial: this.state.middleInitial,
       lastName: this.state.lastName,

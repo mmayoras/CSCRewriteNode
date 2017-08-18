@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import ConsumerTable from './ConsumerTable';
 import ConnectToPinpadStarter from '../ConnectToPinpadStarter';
-import fetch from 'isomorphic-fetch'
 import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/slide.css';
@@ -11,16 +10,16 @@ class Consumer extends Component {
     super();
 
     // Set state data
-    this.state = {consumerApplications: [], conId: 2};
+    this.state = {consumerApplications: []};
   }
 
   loadConsumerApplicationsFromServer = () => {
     fetch('/api/consumerApplications').
     then((response) => response.json()).
     then((responseData) => {
-      debugger;
+      // debugger;
       this.setState({
-        consumerApplications: responseData
+        consumerApplications: responseData,
       });
     }).catch((err) => {
       console.info(err);
@@ -29,39 +28,35 @@ class Consumer extends Component {
 
   // Create new consumerApplication
   createConsumer = (consumerApplication) => {
-    this.setState({
-      conId: this.state.conId + 1
-    });
-
-    consumerApplication.id = this.state.conId;
+    console.log(JSON.stringify(consumerApplication));
 
     fetch('/api/consumerApplications', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(consumerApplication)
-    }).then(
-        res => this.loadConsumerApplicationsFromServer()
+      body: JSON.stringify(consumerApplication),
+    }).then(res => {
+      this.loadConsumerApplicationsFromServer();
+      },
     ).catch(err => console.error(err));
   };
 
   deleteConsumerApplication = (consumerApplication) => {
-    if (consumerApplication.id === (this.state.conId - 1)) {
-      this.setState({
-        conId: this.state.conId - 1
-      });
-    }
-
-    fetch(consumerApplication._links.self.href,
-        {method: 'DELETE',}).then(
-        res => this.loadConsumerApplicationsFromServer()
-    ).then(() => {
+    fetch('/api/deleteconsumer/' + consumerApplication._id, {
+      method: 'DELETE',
+    }).
+    then((response) => {
+      debugger;
+      console.log(response);
+      this.loadConsumerApplicationsFromServer();
+    })
+    .then(() => {
       Alert.success('Consumer Application Deleted', {
         position: 'bottom-left',
-        effect: 'slide'
+        effect: 'slide',
       });
-    }).catch(err => console.error(err));
+    }).catch((err) => console.info(err));
   };
 
   componentDidMount = () => {

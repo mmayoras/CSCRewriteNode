@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import CommercialTable from './CommercialTable';
 import ConnectToPinpadStarter from '../ConnectToPinpadStarter'
-import fetch from 'isomorphic-fetch'
 import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/slide.css';
@@ -11,36 +10,26 @@ class Commercial extends Component {
     super();
 
     // Set state data
-    this.state = {
-      commercialApplications: [],
-      comId: 2
-    };
+    this.state = {commercialApplications: []};
   }
 
-  loadCommercialApplicationsFromServer = () => {;
-    let endpointUrl = '/api/commercialApplications';
-    debugger;
+  loadCommercialApplicationsFromServer = () => {
+    // debugger;
     fetch('/api/commercialApplications').
     then((response) => response.json()).
     then((responseData) => {
-      debugger;
+      // debugger;
       this.setState({
         commercialApplications: responseData
       });
     }).catch((err) => {
-      debugger;
+      // debugger;
       console.info(err);
     });
   };
 
   // Create new commercialApplication
   createCommercial = (commercialApplication) => {
-    this.setState({
-      comId: this.state.comId + 1
-    });
-
-    commercialApplication.id = this.state.comId;
-
     fetch('/api/commercialApplications', {
       method: 'POST',
       headers: {
@@ -53,12 +42,6 @@ class Commercial extends Component {
   };
 
   deleteCommercialApplication = (commercialApplication) => {
-    if (commercialApplication.id === (this.state.comId - 1)) {
-      this.setState({
-        comId: this.state.comId - 1
-      });
-    }
-
     fetch(commercialApplication._links.self.href,
         {method: 'DELETE',}).then(
         res => this.loadCommercialApplicationsFromServer()
