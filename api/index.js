@@ -12,6 +12,13 @@ MongoClient.connect(config.mongodbUrl, (err, db) => {
   mdb = db;
 });
 
+// middleware to use for all requests
+router.use(function(req, res, next) {
+  // do logging
+  console.log('REQUEST TYPE: ' + req.method);
+  next(); // make sure we go to the next routes and don't stop here
+});
+
 router.route('/consumerApplications').get((req, res) => {
   let consumerApps = [];
 
@@ -19,6 +26,7 @@ router.route('/consumerApplications').get((req, res) => {
     assert.equal(null, err);
 
     if (!consumerApp) {
+      console.log(JSON.stringify(consumerApps));
       res.send(consumerApps);
       return;
     }
@@ -37,10 +45,18 @@ router.route('/consumerApplications').get((req, res) => {
 });
 
 router.route('/deleteconsumer/:_id').delete((req, res) => {
-  let uid = req.params._id.toString();
+  let paramInt = parseInt(req.params._id);
+  console.log(paramInt);
 
-  mdb.collection('consumer').remove({"_id":uid}, function(err, result) {
-    res.send( (result ===1) ? { msg: 'Deleted' } : { msg: 'error: ' + err });
+  let myQuery = { id: paramInt};
+  console.log(myQuery);
+
+  mdb.collection('consumer').deleteOne(myQuery, function(err, result) {
+    let message = (result ===1) ? { msg: 'Deleted' } : { msg: 'error: ' + err };
+
+    console.log(message);
+
+    res.send(message);
   });
 });
 

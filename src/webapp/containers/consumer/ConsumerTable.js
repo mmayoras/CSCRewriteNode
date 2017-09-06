@@ -19,7 +19,7 @@ class ConsumerTable extends Component {
 
     let consumerApplications = this.props.consumerApplications.map(
         consumerApplication =>
-            <ConsumerApplication key={consumerApplication._id}
+            <ConsumerApplication key={consumerApplication.id}
                                  consumerApplication={consumerApplication}
                                  deleteConsumerApplication={this.props.deleteConsumerApplication}
             />,
@@ -46,7 +46,7 @@ class ConsumerTable extends Component {
                    alt="consumer card" style={imageStyle}/>
             </div>
           </div>
-          <ConsumerForm createConsumer={this.props.createConsumer}/>
+          <ConsumerForm createConsumer={this.props.createConsumer} nextId={this.props.nextId}/>
           <div style={{overflowX: 'auto'}}>
             <table className="standard-table">
               <thead>

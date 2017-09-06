@@ -9,7 +9,10 @@ class Consumer extends Component {
     super();
 
     // Set state data
-    this.state = {consumerApplications: []};
+    this.state = {
+      consumerApplications: [],
+      consumerId: -1,
+    };
   }
 
   loadConsumerApplicationsFromServer = () => {
@@ -19,6 +22,7 @@ class Consumer extends Component {
       // debugger;
       this.setState({
         consumerApplications: responseData,
+        consumerId: responseData.length + 1,
       });
     }).catch((err) => {
       console.info(err);
@@ -42,7 +46,7 @@ class Consumer extends Component {
   };
 
   deleteConsumerApplication = (consumerApplication) => {
-    fetch('/api/deleteconsumer/' + consumerApplication._id, {
+    fetch('/api/deleteconsumer/' + consumerApplication.id, {
       method: 'DELETE',
     }).
     then((response) => {
@@ -67,7 +71,9 @@ class Consumer extends Component {
         <div>
           <ConsumerTable createConsumer={this.createConsumer}
                          deleteConsumerApplication={this.deleteConsumerApplication}
-                         consumerApplications={this.state.consumerApplications}/>
+                         consumerApplications={this.state.consumerApplications}
+                         nextId={this.state.consumerId}
+          />
         </div>
     );
   }

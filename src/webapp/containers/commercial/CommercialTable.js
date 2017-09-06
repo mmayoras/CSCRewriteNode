@@ -18,7 +18,7 @@ class CommercialTable extends Component {
 
     let commercialApplications = this.props.commercialApplications.map(
         commercialApplication =>
-            <CommercialApplication key={commercialApplication._id}
+            <CommercialApplication key={commercialApplication.id}
                                    commercialApplication={commercialApplication}
                                    deleteCommercialApplication={this.props.deleteCommercialApplication}
             />,

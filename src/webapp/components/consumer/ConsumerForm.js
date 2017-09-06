@@ -5,6 +5,7 @@ class ConsumerForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: -1,
       firstName: '',
       middleInitial: '',
       lastName: '',
@@ -28,6 +29,7 @@ class ConsumerForm extends Component {
     event.preventDefault();
 
     let newConsumer = {
+      id: this.props.nextId,
       firstName: this.state.firstName,
       middleInitial: this.state.middleInitial,
       lastName: this.state.lastName,

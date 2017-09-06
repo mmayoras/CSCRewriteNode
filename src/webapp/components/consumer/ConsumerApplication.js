@@ -10,7 +10,7 @@ class ConsumerApplication extends Component {
 
     return (
         <tr>
-          <td style={tableData}>{this.props.consumerApplication._id}</td>
+          <td style={tableData}>{this.props.consumerApplication.id}</td>
           <td style={tableData}>{this.props.consumerApplication.firstName}</td>
           <td style={tableData}>{this.props.consumerApplication.middleInitial}</td>
           <td style={tableData}>{this.props.consumerApplication.lastName}</td>
