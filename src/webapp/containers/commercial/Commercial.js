@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import CommercialTable from './CommercialTable';
-import ConnectToPinpadStarter from '../ConnectToPinpadStarter'
 import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/slide.css';
@@ -63,7 +62,6 @@ class Commercial extends Component {
           <CommercialTable createCommercial={this.createCommercial}
                            deleteCommercialApplication={this.deleteCommercialApplication}
                            commercialApplications={this.state.commercialApplications}/>
-          <ConnectToPinpadStarter/>
         </div>
     );
   }
