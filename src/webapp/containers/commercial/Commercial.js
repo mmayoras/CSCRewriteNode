@@ -9,7 +9,10 @@ class Commercial extends Component {
     super();
 
     // Set state data
-    this.state = {commercialApplications: []};
+    this.state = {
+      commercialApplications: [],
+      commercialId: -1,
+    };
   }
 
   loadCommercialApplicationsFromServer = () => {
@@ -19,7 +22,8 @@ class Commercial extends Component {
     then((responseData) => {
       // debugger;
       this.setState({
-        commercialApplications: responseData
+        commercialApplications: responseData,
+        commercialId: responseData.length + 1,
       });
     }).catch((err) => {
       // debugger;
@@ -41,15 +45,20 @@ class Commercial extends Component {
   };
 
   deleteCommercialApplication = (commercialApplication) => {
-    fetch(commercialApplication._links.self.href,
-        {method: 'DELETE',}).then(
-        res => this.loadCommercialApplicationsFromServer()
-    ).then(() => {
+    fetch('/api/deletecommercial/' + commercialApplication.id, {
+      method: 'DELETE',
+    }).
+    then((response) => {
+      debugger;
+      console.log(response);
+      this.loadCommercialApplicationsFromServer();
+    })
+    .then(() => {
       Alert.success('Commercial Application Deleted', {
         position: 'bottom-left',
-        effect: 'slide'
+        effect: 'slide',
       });
-    }).catch(err => console.error(err));
+    }).catch((err) => console.info(err));
   };
 
   componentDidMount = () => {
@@ -61,7 +70,9 @@ class Commercial extends Component {
         <div>
           <CommercialTable createCommercial={this.createCommercial}
                            deleteCommercialApplication={this.deleteCommercialApplication}
-                           commercialApplications={this.state.commercialApplications}/>
+                           commercialApplications={this.state.commercialApplications}
+                           nextId={this.state.commercialId}
+          />
         </div>
     );
   }

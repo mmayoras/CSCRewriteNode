@@ -46,7 +46,7 @@ class CommercialTable extends Component {
                    alt="commercial card" style={imageStyle}/>
             </div>
           </div>
-          <CommercialForm createCommercial={this.props.createCommercial}/>
+          <CommercialForm createCommercial={this.props.createCommercial} nextId={this.props.nextId}/>
           <div style={{overflowX: 'auto'}}>
             <table className="standard-table">
               <thead>

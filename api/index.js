@@ -67,6 +67,7 @@ router.route('/commercialApplications').get((req, res) => {
     assert.equal(null, err);
 
     if (!commercialApp) {
+      console.log(JSON.stringify(commercialApps));
       res.send(commercialApps);
       return;
     }
@@ -81,6 +82,22 @@ router.route('/commercialApplications').get((req, res) => {
 
     console.log('Successfully saved to database');
     res.send(req.body);
+  });
+});
+
+router.route('/deletecommercial/:_id').delete((req, res) => {
+  let paramInt = parseInt(req.params._id);
+  console.log(paramInt);
+
+  let myQuery = { id: paramInt};
+  console.log(myQuery);
+
+  mdb.collection('commercial').deleteOne(myQuery, function(err, result) {
+    let message = (result ===1) ? { msg: 'Deleted' } : { msg: 'error: ' + err };
+
+    console.log(message);
+
+    res.send(message);
   });
 });
 
