@@ -1,16 +1,14 @@
 import express from 'express';
-import MongoClient from 'mongodb';
+import mongoose from 'mongoose';
 import assert from 'assert';
 import config from '../config';
+import userRouter from './user';
 
 const router = express.Router();
-let mdb;
 
-MongoClient.connect(config.mongodbUrl, (err, db) => {
-  assert.equal(null, err);
-
-  mdb = db;
-});
+mongoose.connect(config.mongodbUrl);
+let mdb = mongoose.connection;
+mdb.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // middleware to use for all requests
 router.use(function(req, res, next) {
@@ -18,6 +16,8 @@ router.use(function(req, res, next) {
   console.log('REQUEST TYPE: ' + req.method);
   next(); // make sure we go to the next routes and don't stop here
 });
+
+router.use('/user', userRouter);
 
 router.route('/consumerApplications').get((req, res) => {
   let consumerApps = [];
